@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="w-[60%] h-[60vh] relative mx-auto mt-[50px] overflow-hidden">
+        <img src="https://tse2.mm.bing.net/th?id=OIP.7cRYFyLoDEDh4sRtM73vvwHaDg&pid=Api&P=0&h=180" alt="" class="slide absolute size-full transtion-all duration-1000 ">
+        <img src="https://tse2.mm.bing.net/th?id=OIP.Y2C49ZpFqa1h8RDBoM0MKQHaE8&pid=Api&P=0&h=180" alt="" class="slide absolute size-full transtion-all duration-1000 ">
+        <img src="https://tse3.mm.bing.net/th?id=OIP.MCLzVoExgXPyNi_V5gb1AwHaE7&pid=Api&P=0&h=180" alt="" class="slide absolute size-full transtion-all duration-1000 ">
+        <img src="https://tse4.mm.bing.net/th?id=OIP.H0W5_LcYDiD-JU1r8AUPHQHaEK&pid=Api&P=0&h=180" alt="" class="slide absolute size-full transtion-all duration-1000 ">
+        <img src="https://tse3.mm.bing.net/th?id=OIP.x-ibkw-Kpzz3LV8WfR0W7QHaEo&pid=Api&P=0&h=180" alt="" class="slide absolute size-full transtion-all duration-1000 ">
+    </div>
+    <div class="flex justify-center gap-4 mt-4">
+        <button class="bg-black/80 text-white p-2 rounded-lg cursor-pointer" onclick="prevSlide()">Previous</button>
+        <button class="bg-black/80 text-white p-2 rounded-lg cursor-pointer" onclick="nextSlide()">Next</button>
+
+    </div>
+    <script>
+        // let slides=document.querySelectorAll('.slide');
+        // let currentSlide=0;
+        // function showSlide(index){
+        //     slides.forEach((slide,i)=>{
+        //         slide.classList.add('hidden');
+        //         if(i===index){
+        //             slide.classList.remove('hidden');
+        //         }
+        //     })
+        // }
+        // function nextSlide(){
+        //     currentSlide=(currentSlide+1)%slides.length;
+        //     showSlide(currentSlide);
+        // }
+        // function prevSlide(){
+        //     currentSlide=(currentSlide-1+slides.length)%slides.length;
+        //     showSlide(currentSlide);
+        // }
+        
+        // showSlide(currentSlide);
+        let slides=document.querySelectorAll('.slide');
+        let cnt=0;
+        let ts=slides.length-1;
+        slides.forEach((slides,idx)=>{
+            slides.style.left=`${idx*100}%`;
+        })
+        function prevSlide(){
+            if(cnt > 0){
+            cnt--;
+            slider();
+            }
+        }
+        function nextSlide(){
+            if(cnt < ts){
+            cnt++;
+            slider();
+            }0
+        }
+        function slider(){
+            slides.forEach((slides)=>{
+                slides.style.transform=`translateX(-${cnt*100}%)`;
+            })
+        }
+        setInterval(function(){
+            if(cnt < ts){
+                cnt++;
+            }else{
+                cnt=0;
+            }
+            slider();
+        }, 5000);
+    </script>
+</body>
+</html>
